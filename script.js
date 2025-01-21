@@ -19,6 +19,7 @@ async function checkWeather(city){
     } else{
     
        data = await response.json();
+        console.log(data);
         const lat = data.coord.lat;
         const lon = data.coord.lon;
         const aqiResponse = await fetch(aqi + `lat=${lat}&lon=${lon}&appid=${apiKey}`);
@@ -83,6 +84,7 @@ const getLocation = () =>{
     fetch("https://ipapi.co/json")
     .then((response) => response.json())
     .then((ipData) => {
+        console.log(ipData);
         checkWeather(ipData.city);
         
     })
